@@ -1,3 +1,3 @@
 # Practica_3
- 
- Aquesta pràctica està dividida en dos branques, la del wifi i la del bluetooth
+ **Alumne Bernat Rubiol**
+ Aquesta pràctica està dividida en dos carpetes, la del wifi i la del bluetooth
