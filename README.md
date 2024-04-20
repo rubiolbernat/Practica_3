@@ -8,4 +8,4 @@
 |[Main](https://github.com/rubiolbernat/Practica_3)|   |
 |---|---|
 |- |[WIFI](/P3_WIFI)  | 
-|- |[Bluetooth](https://github.com/rubiolbernat/Practica_3/tree/main/P3_Bluetooth)|
+|- |[Bluetooth](/P3_Bluetooth)|
