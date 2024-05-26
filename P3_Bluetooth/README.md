@@ -1,7 +1,7 @@
 # P3-WIFI-y-Bluetooth_Africa
 
 # BLUETOOTH 
-Alumna: **Àfrica Abad**
+Alumna: **Bernat Rubiol**
 
 ## Objectiu
 L'objectiu de la pràctica és comprendre el funcionament de WIFI i BT.

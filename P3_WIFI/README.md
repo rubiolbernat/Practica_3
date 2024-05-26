@@ -1,5 +1,5 @@
 # PRACTICA 3 : WIFI  y BLUETOOTH 
-Alumnes: **Bernat Rubiol i Àfrica Abad**
+Alumnes: **Bernat Rubiol**
 
 ## Objectiu
 El objetivo de la practica es comprender el funcionamiento de WIFI Y BT.
@@ -86,4 +86,57 @@ Per a que el fitxer es penji en el servidor:
 
   ![Imatge web](Web_capture.PNG)
 
-  
+  # Diagrama de flux
+
+  ```mermaid
+graph TD
+    A[Inici] --> B[setup]
+    B --> C[Serial.begin 115200]
+    B --> D{SPIFFS.begin true}
+    D -->|false| E[Serial.println An Error has occurred while mounting SPIFFS]
+    D -->|true| F[readFile /index.html]
+    F --> G[fileContent = readFile /index.html]
+    G --> H[delay 1000]
+    H --> I[Serial.println Try Connecting to]
+    I --> J[Serial.println ssid]
+    J --> K[WiFi.begin ssid, password]
+    K --> L{WiFi.status != WL_CONNECTED}
+    L -->|true| M[delay 1000 \n Serial.print .]
+    M --> L
+    L -->|false| N[Serial.println WiFi connected successfully]
+    N --> O[Serial.print Got IP]
+    O --> P[Serial.println WiFi.localIP]
+    P --> Q[server.begin]
+    Q --> R[Serial.println HTTP server started]
+    R --> S[server.on /, handle_root]
+    S --> T[loop]
+    T --> U[server.handleClient]
+
+    subgraph Definicions
+      V[String readFile fileName]
+      W[File file = SPIFFS.open fileName]
+      X[if not file]
+      Y[Serial.println Failed to open file for reading]
+      Z[return content]
+      AA[while file.available]
+      AB[char c = file.read]
+      AC[content += c]
+      AD[file.close]
+      AE[return content]
+      AF[void handle_root]
+      AG[server.send 200, text/html, fileContent]
+    end
+
+    W --> X
+    X -->|true| Y
+    Y --> Z
+    X -->|false| AA
+    AA --> AB
+    AB --> AC
+    AA --> AD
+    AD --> AE
+    V --> W
+
+    AF --> AG
+
+```
